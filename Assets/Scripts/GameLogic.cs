@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour {
 
@@ -65,7 +66,7 @@ public class GameLogic : MonoBehaviour {
 		startUI.SetActive (false);
 		eventSystem.SetActive(false);
 		iTween.MoveTo (player, startPoint.transform.position, 5f);
-
+        eventSystem.SetActive(true);
         switch (button.name)
         {
             case "Entretenimento":
@@ -86,6 +87,11 @@ public class GameLogic : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
